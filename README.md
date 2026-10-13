@@ -16,6 +16,8 @@ visit the following link to test the app, it'll run same on all the machines
 
 
 
+
+
 | Part | Where |
 |---|---|
 | 1 · AI development: document assistant | `app/knowledge/`, `app/agents/` |
