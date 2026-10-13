@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MGC Sales Copilot</title>
+  <meta name="description" content="Document-grounded sales assistant and lead scoring for MGC Aurora Heights.">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img class="logo" src="logo.png" alt="MGC Developments" width="88" height="44">
+      <div class="brand-text">
+        <div class="brand-name">Sales Copilot</div>
+        <div class="brand-sub">Aurora Heights · GT Road, Islamabad</div>
+      </div>
+    </div>
+    <div class="status" id="status"></div>
+  </header>
+
+  <main class="page">
+    <section class="kpis" id="kpis" aria-label="System overview">
+      <div class="kpi skeleton"></div><div class="kpi skeleton"></div>
+      <div class="kpi skeleton"></div><div class="kpi skeleton"></div>
+    </section>
+
+    <div class="grid">
+      <!-- ============ Assistant ============ -->
+      <section class="card assistant" aria-labelledby="assistant-title">
+        <div class="card-head">
+          <div>
+            <h2 id="assistant-title">Ask the documents</h2>
+            <p class="muted">Answers come only from the brochure, price list and booking FAQ, and always cite their source.</p>
+          </div>
+        </div>
+
+        <div class="thread" id="thread" aria-live="polite">
+          <div class="empty" id="empty">
+            <div class="empty-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 9h8M8 12h5"/></svg>
+            </div>
+            <p><b>Try a question a buyer would ask.</b><br>Prices are calculated, not guessed. Conflicts and gaps are flagged, never papered over.</p>
+          </div>
+        </div>
+
+        <div class="suggestions" id="suggestions"></div>
+
+        <form class="composer" id="composer">
+          <textarea id="q" rows="1" maxlength="500" placeholder="e.g. Total for a Margalla-facing corner 2-bed on floor 15, Block B?" aria-label="Question"></textarea>
+          <button class="btn primary" id="askBtn" type="submit" aria-label="Ask">
+            <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+      </section>
+
+      <!-- ============ Lead scoring ============ -->
+      <section class="card scoring" aria-labelledby="score-title">
+        <div class="card-head">
+          <div>
+            <h2 id="score-title">Score a lead</h2>
+            <p class="muted">Model trained from scratch on 9,000 historical leads. Uses only what's known when a lead arrives.</p>
+          </div>
+        </div>
+
+        <form id="leadForm" class="lead-form">
+          <label class="field"><span>Source</span><select name="source" required></select></label>
+          <label class="field"><span>Property type</span><select name="property_type" required></select></label>
+          <label class="field"><span>City</span><select name="city" required></select></label>
+          <label class="field"><span>Area</span><select name="area"></select></label>
+          <label class="field"><span>Budget <em>(PKR lac)</em></span><input name="budget_pkr_lac" type="number" min="1" step="1" placeholder="120"></label>
+          <label class="field"><span>Bedrooms</span><input name="bedrooms" type="number" min="0" max="10" placeholder="—"></label>
+          <div class="toggles">
+            <label class="toggle"><input type="checkbox" name="is_overseas"><span>Overseas buyer</span></label>
+            <label class="toggle"><input type="checkbox" name="referred_by_existing_client"><span>Referred by client</span></label>
+            <label class="toggle"><input type="checkbox" name="has_financing_approved"><span>Financing approved</span></label>
+          </div>
+          <button class="btn primary wide" type="submit" id="scoreBtn">Score lead</button>
+        </form>
+
+        <div id="scoreResult" class="score-result" hidden></div>
+
+        <details class="model-card" id="modelCard">
+          <summary>How the model was built</summary>
+          <div id="modelInfo" class="muted"></div>
+        </details>
+      </section>
+    </div>
+
+    <footer class="foot muted">
+      Built for MGC Developments · FastAPI · scikit-learn · PostgreSQL
+      <a href="#" id="repoLink" target="_blank" rel="noopener">· Source code</a>
+    </footer>
+  </main>
+
+  <script src="config.js?v=3"></script>
+  <script src="app.js?v=3"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{
+  "trained_at": "2026-10-13T06:15:03+00:00",
+  "rows_raw": 9160,
+  "rows_after_dedupe": 9000,
+  "split": {
+    "cutoff": "2025-04-01",
+    "train": {
+      "rows": 6410,
+      "from": "2024-01-01 00:14:03",
+      "to": "2025-03-31 22:45:21",
+      "conversion_rate": 0.0665
+    },
+    "test": {
+      "rows": 2590,
+      "from": "2025-04-01 00:26:55",
+      "to": "2025-10-01 22:23:19",
+      "conversion_rate": 0.0772
+    }
+  },
+  "metric": "average_precision (PR-AUC); no-skill baseline = test conversion rate",
+  "model_intake_features": {
+    "average_precision": 0.1721,
+    "roc_auc": 0.7074,
+    "top_100_converted": 28
+  },
+  "no_skill": {
+    "average_precision": 0.0772,
+    "roc_auc": 0.5,
+    "top_100_converted_random_mean": 7.7,
+    "top_100_converted_random_p95": 12
+  },
+  "source_rate_heuristic": {
+    "average_precision": 0.1394,
+    "top_100_converted": 24
+  },
+  "comparison_with_engagement_features": {
+    "average_precision": 0.4147,
+    "roc_auc": 0.8463,
+    "top_100_converted": 54
+  },
+  "comparison_random_split_intake_features": {
+    "average_precision": 0.1973,
+    "roc_auc": 0.7087,
+    "top_100_converted": 29
+  }
+}
