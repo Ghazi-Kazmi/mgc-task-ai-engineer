@@ -10,7 +10,9 @@ A sales tool for **MGC Aurora Heights** that tackles the two problems in the bri
    9,000 historical leads, ranks new leads and explains each score.
 
 *Deployed the frontend and the backend too: frontend on vercel and backend on railway*
+
 visit the following link to test the app, it'll run same on all the machines
+
 **Live demo:** https://mgc-task-ai-engineer-frontend.vercel.app/
 
 | Part | Where |
