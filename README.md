@@ -11,6 +11,7 @@ A sales tool for **MGC Aurora Heights** that tackles the two problems in the bri
 
 *Deployed the frontend and the backend too: frontend on vercel and backend on railway*
 visit the following link to test the app, it'll run same on all the machines
+
 **Live demo:** https://mgc-task-ai-engineer-frontend.vercel.app/
 
 
